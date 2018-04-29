@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="module.manager_core.user.entity">
+	<class name="User" table="mc_user">
+		<id name="user_id" type="java.lang.String">
+			<column name="user_id" length="32" />
+			<generator class="uuid.hex" />
+		</id>
+		<property name="user_name" type="java.lang.String" >
+			<column name="user_name" length="20" not-null="true"/>
+		</property>
+		<property name="user_account" type="java.lang.String">
+			<column name="user_account" length="50" not-null="true"/>
+			</property>
+		<property name="user_password" type="java.lang.String">
+			<column name="user_password" length="50" not-null="true"/>
+		</property>
+		<property name="user_gender" type="java.lang.Boolean">
+			<column name="user_gender"/>
+		</property>
+		<property name="user_email" type="java.lang.String">
+			<column name="user_email" length="50"/>
+		</property>
+		<property name="user_phone" type="java.lang.String">
+			<column name="user_phone" length="20"/>
+		</property>
+		<property name="user_address" type="java.lang.String">
+			<column name="user_address" length="60"/>
+		</property>
+		<property name="user_idcard" type="java.lang.String">
+			<column name="user_idcard" length="30"/>
+		</property>
+		<property name="user_icon" type="java.lang.String">
+			<column name="user_icon" length="100"/>
+		</property>
+	</class>
+
+</hibernate-mapping>
