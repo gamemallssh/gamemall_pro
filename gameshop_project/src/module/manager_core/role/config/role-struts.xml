@@ -9,6 +9,9 @@
     		<result name="{1}">/WEB-INF/jsp/manager_core/role/{1}.jsp</result>
     		<result name="list" type="redirectAction">
 				<param name="actionName">role_listUI</param>
+				<param name="role.role_name">${strName}</param>
+    			<param name="pageNo">${pageNo}</param>
+				<param name="encode">true</param>
 			</result>
 			<allowed-methods>listUI,addUI,add,editUI,edit,delete,deleteSelected</allowed-methods>
     	</action>

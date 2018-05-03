@@ -7,7 +7,7 @@ public class PageResult {
 	// 总页数
 	private int totalPageCount;
 	// 总记录数
-	private int totalCount;
+	private long totalCount;
 	// 当前页
 	private int pageNo;
 	// 页大小
@@ -16,12 +16,23 @@ public class PageResult {
 	private List<Object> items;
 
 	// 页大小常量
-	public static int PAGE_SIZE = 3;
+	public static int PAGE_SIZE = 5;
+
+	public PageResult() {
+	}
+
+	public PageResult(long totalCount, int pageNo, int pageSize,
+			List<Object> items) {
+		this.totalCount = totalCount;
+		this.pageNo = pageNo;
+		this.pageSize = pageSize;
+		this.items = items;
+	}
 
 	public int getTotalPageCount() {
-		if(totalCount > 0) {
-			totalPageCount = (totalCount-1)/pageSize+1;
-		}else {
+		if (totalCount > 0) {
+			totalPageCount = (int)((totalCount - 1) / pageSize + 1);
+		} else {
 			totalPageCount = 0;
 		}
 		return totalPageCount;
@@ -31,11 +42,11 @@ public class PageResult {
 		this.totalPageCount = totalPageCount;
 	}
 
-	public int getTotalCount() {
+	public long getTotalCount() {
 		return totalCount;
 	}
 
-	public void setTotalCount(int totalCount) {
+	public void setTotalCount(long totalCount) {
 		this.totalCount = totalCount;
 	}
 

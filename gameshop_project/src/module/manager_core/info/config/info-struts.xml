@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+    "http://struts.apache.org/dtds/struts-2.5.dtd">
+<struts>
+
+	<package name="info-action" extends="base-default,json-default" namespace="/manager_core">
+    	<action name="info_*" class="module.manager_core.info.action.InfoAction" method="{1}">
+    		<result name="{1}">/WEB-INF/jsp/manager_core/info/{1}.jsp</result>
+    		<result name="list" type="redirectAction">
+    			<param name="actionName">info_listUI</param>
+    			<param name="info.info_title">${strTitle}</param>
+    			<param name="pageNo">${pageNo}</param>
+    			<param name="encode">true</param>
+    		</result>
+    		<result name="publicResult" type="json">
+    			<param name="root">resultStr</param>
+    		</result>
+			<allowed-methods>listUI,addUI,add,editUI,edit,delete,deleteSelected,publicInfo</allowed-methods>
+    	</action>
+	</package>
+
+</struts>

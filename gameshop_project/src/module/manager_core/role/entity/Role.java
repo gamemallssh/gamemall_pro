@@ -15,10 +15,13 @@ public class Role implements Serializable {
 
 	public Role(String role_id, String role_name,
 			Set<RolePrivilege> role_privilege) {
-		super();
 		this.role_id = role_id;
 		this.role_name = role_name;
 		this.role_privilege = role_privilege;
+	}
+
+	public Role(String role_id) {
+		this.role_id = role_id;
 	}
 
 	public String getRole_id() {

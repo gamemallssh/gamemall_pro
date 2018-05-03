@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="module.manager_core.info.entity">
+	<class name="Info" table="mc_info">
+		<id name="info_id" type="java.lang.String">
+			<column name="info_id" length="32" />
+			<generator class="uuid.hex" />
+		</id>
+		<property name="info_type" type="java.lang.String" >
+			<column name="info_type" length="10" not-null="true"/>
+		</property>
+		<property name="info_title" type="java.lang.String">
+			<column name="info_title" length="100" not-null="true"/>
+			</property>
+		<property name="info_content" type="text">
+			<column name="info_content"/>
+		</property>
+		<property name="info_memo" type="java.lang.String">
+			<column name="info_memo" length="200"/>
+		</property>
+		<property name="info_creator" type="java.lang.String">
+			<column name="info_creator" length="10"/>
+		</property>
+		<property name="info_create_time" type="java.sql.Timestamp">
+			<column name="info_create_time" length="19"/>
+		</property>
+		<property name="info_state" type="java.lang.String">
+			<column name="info_state" length="1"/>
+		</property>
+	</class>
+</hibernate-mapping>

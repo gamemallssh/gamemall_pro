@@ -20,8 +20,8 @@
     		// 后台校验
     		if($.trim(account) != "") {
 	    		$.ajax({
-	    			url: "${basePath}nsfw/user_verifyAccount.action",
-	    			data: {"user.account":account},
+	    			url: "${basePath}manager_core/user_verifyAccount.action",
+	    			data: {"user.user_account":account},
 	    			type: "POST",
 	    			success: function(msg){
 	    				if("true" != msg) {
@@ -65,7 +65,7 @@
   </head>
   
   <body>
-   	<form action="" method="post" enctype="multipart/form-data">
+   	<form action="${basePath }manager_core/user_add.action" method="post" enctype="multipart/form-data">
 	    <table id="baseInfo" width="100%" align="center" border="0" cellpadding="0" cellspacing="0"  >
 	        <tr>
 	            <td class="tdBg" width="200px">头像：</td>
@@ -91,7 +91,7 @@
 	        </tr>
 	        <tr>
 	            <td class="tdBg" width="200px">角色：</td>
-	            <td><s:checkboxlist list="roleList" listKey="role_id" listValue="role_name" name="userRoleIds"/></td>
+	            <td><s:checkboxlist list="#roleList" name="userRoleIds" listKey="role_id" listValue="role_name"/></td>
 	        </tr>
 	        <tr>
 	            <td class="tdBg" width="200px">电子邮箱：</td>

@@ -18,4 +18,12 @@ public class RoleServiceImpl extends BaseServiceImpl<Role> implements RoleServic
 		super.setBaseDao(roleDao);
 		this.roleDao = roleDao;
 	}
+	
+	@Override
+	public void update(Role role) {
+		// 清除update带来的回填影响
+		roleDao.deleteRolePrivilegeByRoleId(role.getRole_id());
+		roleDao.update(role);
+	}
+	
 }

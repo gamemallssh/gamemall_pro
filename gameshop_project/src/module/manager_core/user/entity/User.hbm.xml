@@ -36,5 +36,4 @@
 			<column name="user_icon" length="100"/>
 		</property>
 	</class>
-
 </hibernate-mapping>
