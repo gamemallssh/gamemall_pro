@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="module.manager_core.user.entity">
+	<class name="UserRole" table="mc_user_role">
+		<composite-id name="userrole_id" class="UserRoleId">
+			<key-many-to-one name="role" lazy="false" class="module.manager_core.role.entity.Role">
+				<column name="role_id"/>
+			</key-many-to-one>
+			<key-property name="user_id" type="java.lang.String">
+				<column name="user_id" length="32"/>
+			</key-property>
+		</composite-id>
+	</class>
+</hibernate-mapping>

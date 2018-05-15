@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:tx="http://www.springframework.org/schema/tx"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+	<context:property-placeholder location="classpath:db.properties"/>
+
+	<!-- 数据源注入 -->
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+		<property name="jdbcUrl" value="${jdbcUrl}" />
+		<property name="driverClass" value="${driverClass}" />
+		<property name="user" value="${user}" />
+		<property name="password" value="${password}" />
+		<!-- 初始化连接数 -->
+		<property name="initialPoolSize" value="${initialPoolSize}" />
+		<!-- 最小连接数 -->
+		<property name="minPoolSize" value="3" />
+		<!-- 最大连接数 -->
+		<property name="maxPoolSize" value="${maxPoolSize}" />
+		<!-- 每次创建的连接数 -->
+		<property name="acquireIncrement" value="3"></property>
+		<!-- 过时回收 -->
+		<property name="maxIdleTime" value="1800"></property>
+	</bean>
+	
+	<!--  -->
+	
+	<!-- hibernate配置 -->
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"></property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+				<prop key="javax.persistence.validation.mode">none</prop>
+			</props>
+		</property>
+		
+		<property name="mappingLocations">
+			<list>
+				<value>classpath:entity/TestEntity.hbm.xml</value>
+				<value>classpath:module/manager_core/*/entity/*.hbm.xml</value>
+			</list>
+		</property>
+	</bean>
+
+	<!-- 事务配置 -->
+	<bean id="txManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<tx:advice id="txAdvice" transaction-manager="txManager">
+		<tx:attributes>
+			<tx:method name="find*" read-only="true"/>
+			<tx:method name="get*" read-only="true"/>
+			<tx:method name="list*" read-only="true"/>
+			<tx:method name="*" rollback-for="Throwable"/>
+		</tx:attributes>
+	</tx:advice>
+	
+	<!-- 事务应用 -->
+	<aop:config>
+		<aop:pointcut expression="bean(*Service)" id="serviceOperation"/>
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="serviceOperation"/>
+	</aop:config>
+	
+	<!-- 加载各模块的spring配置文件 -->
+	<import resource="classpath:config/test-spring.xml"/>
+	<import resource="classpath:module/manager_core/*/config/*-spring.xml"/>
+</beans>

@@ -1,3 +1,3 @@
 eclipse.preferences.version=1
-validator.Checked=conf/struts.xml
+validator.Checked=WebRoot/js/ueditor/jsp/controller.jsp,conf/struts.xml,WebRoot/js/ueditor/jsp/config.json
 validator.Unchecked=

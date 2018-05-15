@@ -1,18 +1,25 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <script type="text/javascript">
+	// 翻页
 	function doGoPage(pageNo) {
-		document.getElementById("pageNo") = pageNo;
+		if($("#pageNo").val() > ${pageResult.totalPageCount}) {
+			pageNo = ${pageResult.totalPageCount};
+		}
+		document.getElementById("pageNo").value = pageNo;
 		document.forms[0].action = list_url;
 		document.forms[0].submit();
 	}
 </script>
 <br/>
 <div align="center">
+	<s:if test="pageResult.totalCount>0">
 	<table>
 		<tr>
 			<td>
-				<s:property value="pageResult.pageNo"/> / <s:property value="pageResult.totalPageCount"/>
+				总共有<s:property value="pageResult.totalCount" />条记录，
+				当前第<s:property value="pageResult.pageNo"/>页 ，
+				共<s:property value="pageResult.totalPageCount"/>页
 			</td>
 			<td>
 				<s:if test="pageResult.pageNo>1">
@@ -23,9 +30,12 @@
 				</s:if>
 			</td>
 			<td>
-				去到<input type="text" id="pageNo" name="pageNo" onkeypress="if(event.keycode==13){doGoPage(this.value);}" min="0"
-				 	size="2" max="" value="<s:property value='pageResult.pageNo' />"/>页
+				去到<input type="text" id="pageNo" name="pageNo" onkeypress="if(event.keyCode==13){doGoPage(this.value);}" min="0"
+				size="2" max="" value="<s:property value='pageResult.pageNo' />"/>页
 			</td>
 		</tr>
 	</table>
+	</s:if><s:else>
+  		暂无数据！
+	</s:else>
 </div>

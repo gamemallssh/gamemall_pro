@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <faceted-project>
-  <runtime name="MyTomcat v7.0"/>
   <fixed facet="wst.jsdt.web"/>
   <fixed facet="jst.web"/>
   <fixed facet="java"/>
@@ -11,4 +10,5 @@
   <installed facet="wst.jsdt.web" version="1.0"/>
   <installed facet="me.spring" version="4.1"/>
   <installed facet="web.struts2" version="2.1"/>
+  <installed facet="me.hibernate" version="4.1"/>
 </faceted-project>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+    "http://struts.apache.org/dtds/struts-2.5.dtd">
+<struts>
+
+	<package name="sysHome-action" extends="base-default" namespace="/sys">
+    	<action name="home_*" class="home.action.HomeAction" method="{1}">
+    		<result name="{1}">/WEB-INF/jsp/home/{1}.jsp</result>
+    		<result name="home">/WEB-INF/jsp/home/home.jsp</result>
+			<allowed-methods>execute</allowed-methods>
+    	</action>
+	</package>
+
+</struts>

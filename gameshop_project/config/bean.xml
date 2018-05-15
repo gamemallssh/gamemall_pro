@@ -50,11 +50,21 @@
 		<property name="mappingLocations">
 			<list>
 				<value>classpath:entity/TestEntity.hbm.xml</value>
-				<value>classpath:module/manager_core/user/entity/*.hbm.xml</value>
-				<value>classpath:module/manager_core/role/entity/*.hbm.xml</value>
+				<value>classpath:module/manager_core/*/entity/*.hbm.xml</value>
 			</list>
 		</property>
-	</bean>
+		<property name="mappingResources">
+			<list>
+				<value>
+					module/manager_mall/goods/entity/MmImages.hbm.xml
+				</value>
+				<value>
+					module/manager_mall/goods/entity/MmGoods.hbm.xml
+				</value>
+				<value>
+					module/manager_mall/goods/entity/MmGoodstype.hbm.xml
+				</value></list>
+		</property></bean>
 
 	<!-- 事务配置 -->
 	<bean id="txManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">

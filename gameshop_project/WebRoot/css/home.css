@@ -1,0 +1,16 @@
+ol,ul,li {
+    list-style-type: none;
+}
+
+/* µ¼º½ */
+.menu{  width:1230px; height:51px; margin: 0 auto; background:url(../images/home/banner_bg.png) no-repeat; padding:0px; }
+.menu ul{ width:1230px; margin:0px; padding:0px;}
+.menu li{ float:left; width:150px; margin:0px;  height:51px; text-align:center;  color:#fff !important; background:url(../images/home/banner_xt.jpg) no-repeat right 4px;  font-weight: bold; font:16px/51px \5fae\8f6f\96c5\9ed1;  font-weight:700;  }
+.menu li a { color:#fff; margin:5px 0px; height:51px; font-size:16px; text-decoration:none;}
+.menu li a:hover{ background:url(../images/home/banner_hover.png) no-repeat left top; margin:0px !important; width:150px; height:51px; display:inline-block; color:#1375b2 !important;}
+.menu li.hover{ background:url(../images/home/banner_hover.png) no-repeat left top; margin:0px; border:0px; width:150px; height:51px; display:inline-block; font-weight: bold !important; color:#1375b2;}
+.menu li.hover a{ color:#1375b2 !important; font-size:16px; font-weight: bold !important; font:16px/51px \5fae\8f6f\96c5\9ed1;}
+.menu li.hover a:hover{ color:#1375b2 !important; }
+.menu_date{ float:right  !important; font:13px/43px \5fae\8f6f\96c5\9ed1 !important; color:#fff; margin:0px !important; background: none !important; font-weight:normal !important; width:146px !important; padding-right:5px; }
+.top a{ font-size:13px; color:#fff;}
+.top a:hover{ font-size:13px; color:#1f1f1f;}

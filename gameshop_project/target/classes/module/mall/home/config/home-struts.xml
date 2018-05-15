@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+    "http://struts.apache.org/dtds/struts-2.5.dtd">
+<struts>
+
+	<package name="mallHome-action" extends="base-default" namespace="/mall">
+    	<action name="home_*" class="module.mall.home.action.HomeAction" method="{1}">
+    		<result name="{1}">/WEB-INF/jsp/mall/{1}.jsp</result>
+			<allowed-methods>frame,left,top</allowed-methods>
+    	</action>
+	</package>
+
+</struts>

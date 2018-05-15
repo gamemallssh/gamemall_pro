@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="module.manager_core.role.entity">
+	<class name="Role" table="mc_role">
+		<id name="role_id" type="java.lang.String">
+			<column name="role_id" length="32" />
+			<generator class="uuid.hex" />
+		</id>
+		<property name="role_name" type="java.lang.String" >
+			<column name="role_name" length="20" not-null="true"/>
+		</property>
+		<set name="role_privilege" inverse="true" lazy="false" cascade="save-update,delete">
+			<key column="role_id"/>
+			<one-to-many class="RolePrivilege"/>
+		</set>
+		
+	</class>
+
+</hibernate-mapping>

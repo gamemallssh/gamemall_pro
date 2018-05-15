@@ -18,7 +18,13 @@
 	</package>
 
 	<!-- 加载各模块的struts配置文件 -->
+	<!-- test模块配置文件 -->
 	<include file="config/test-struts.xml" />
+	<!-- home -->
+	<include file="home/config/home-struts.xml" />
+	<!-- manager_core模块配置文件 -->
 	<include file="module/manager_core/*/config/*-struts.xml" />
+	<!-- mall -->
+	<include file="module/mall/home/config/home-struts.xml" />
 
 </struts>
